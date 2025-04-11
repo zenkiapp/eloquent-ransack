@@ -1,6 +1,6 @@
 {
-  "name": "j-dexx/eloquent-ransack",
-  "description": "Easily filter eloquent models",
+  "name": "zenkiapp/eloquent-ransack",
+  "description": "A dynamic query package for Eloquent models.",
   "type": "library",
    "require": {
        "illuminate/support": "^7.0|^8.0|^10.0",
@@ -14,18 +14,18 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "James Doyley",
-      "email": "jdoyley@gmail.com"
+      "name": "Victor Prato",
+      "email": "admin@zenkiapp.com"
     }
   ],
   "autoload": {
     "psr-4": {
-      "Jdexx\\EloquentRansack\\": "src/"
+       "ZenkiApp\\EloquentRansack\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Jdexx\\EloquentRansack\\Tests\\": "tests/"
+      "ZenkiApp\\EloquentRansack\\Tests\\": "tests/"
     }
   }
 }
