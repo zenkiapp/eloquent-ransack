@@ -21,12 +21,12 @@
   ],
   "autoload": {
     "psr-4": {
-       "ZenkiApp\\EloquentRansack\\": "src/"
+       "Jdexx\\EloquentRansack\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "ZenkiApp\\EloquentRansack\\Tests\\": "tests/"
+      "Jdexx\\EloquentRansack\\Tests\\": "tests/"
     }
   }
 }
