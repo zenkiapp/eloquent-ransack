@@ -38,6 +38,16 @@ class PredicateSplitter
         $predicate = $this->determinePredicate($matchingPredicates);
         $attributeName = $this->determineAttributeName($columnWithPredicate, $predicate);
 
+        // Check if we have multiple attributes (OR condition)
+        if (is_array($attributeName)) {
+            return [
+                'attribute' => $attributeName,
+                'predicate' => $predicate,
+                'value' => $value,
+                'is_or' => true,
+            ];
+        }
+
         return [
             'attribute' => $attributeName,
             'predicate' => $predicate,
@@ -45,11 +55,19 @@ class PredicateSplitter
         ];
     }
 
-    private function determineAttributeName(string $columnWithPredicate, string $predicate): string
+    private function determineAttributeName(string $columnWithPredicate, string $predicate): string|array
     {
         $predicateStart = strpos($columnWithPredicate, $predicate);
         // -1 to chop off the underscore
-        return substr($columnWithPredicate, 0, $predicateStart - 1);
+        $attributePart = substr($columnWithPredicate, 0, $predicateStart - 1);
+
+        // Check if the attribute part contains "_or_" which indicates OR condition between fields
+        if (strpos($attributePart, '_or_') !== false) {
+            // Split the attribute part by "_or_" to get individual attributes
+            return explode('_or_', $attributePart);
+        }
+
+        return $attributePart;
     }
 
     /**
